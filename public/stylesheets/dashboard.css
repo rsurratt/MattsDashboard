@@ -1,0 +1,28 @@
+body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input {
+    font-family: verdana,helvetica,arial,sans-serif;
+}
+
+.heading td { padding: 0 10px 0 0; }
+h1 { color: #310875; }
+
+td.number, th.number { text-align:right; }
+td.text, th.text { text-align:left; }
+
+.statusTable {
+    border-collapse: collapse;
+    border: 1px solid #62409C;
+}
+
+.statusTable th {
+    background-color: #7253A6;
+    color: #FFFFFF;
+    font-size: 1.4em;
+    padding: 5px 7px 4px;
+    padding-top: 5px;
+}
+
+.statusTable td {
+    font-size: 1.2em;
+    padding: 3px 7px 2px;
+}
+

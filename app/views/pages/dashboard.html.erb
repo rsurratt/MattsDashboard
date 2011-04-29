@@ -1,0 +1,28 @@
+<table class="heading">
+  <tr>
+    <td><img border="0" alt="Relay for Life" src="http://main.acsevents.org/images/RFLFY10images/Logo.gif"/></td>
+    <td><h1>Matt Blom's Relays</h1></td>
+  </tr>
+</table>
+
+<table class="statusTable">
+  <thead>
+    <tr>
+      <th class="text">Relay</th>
+      <th class="number">Dollars Raised</th>
+      <th class="number">Participants</th>
+      <th class="number">Teams</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @relayStats.each { |relayStat| %>
+        <tr>
+          <td class="text"><a href="<%= relayStat[:url] %>"><%= relayStat[:name] %></a></td>
+          <td class="number"><%= relayStat[:dollarsraised] %></td>
+          <td class="number"><%= relayStat[:participants] %></td>
+          <td class="number"><%= relayStat[:teams] %></td>
+        </tr>
+    <% } %>
+  </tbody>
+</table>
+
