@@ -18,11 +18,91 @@
     <% @relayStats.each { |relayStat| %>
         <tr>
           <td class="text"><a href="<%= relayStat[:url] %>"><%= relayStat[:name] %></a></td>
-          <td class="number"><%= relayStat[:dollarsraised] %></td>
-          <td class="number"><%= relayStat[:participants] %></td>
-          <td class="number"><%= relayStat[:teams] %></td>
+          <td class="number">
+            <%= relayStat[:dollarsraised] %>
+            <table class="bargraph">
+              <tr>
+                <td><%= relayStat[:raisedgoalpercent] %>%</td>
+                <td>
+                  <div class="line">
+                    <div class="fill" style="width:<%= relayStat[:raisedgoalpercent] %>px"></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="number">
+            <%= relayStat[:participants] %>
+            <table class="bargraph">
+              <tr>
+                <td><%= relayStat[:partsgoalpercent] %>%</td>
+                <td>
+                  <div class="line">
+                    <div class="fill" style="width:<%= relayStat[:partsgoalpercent] %>px"></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="number">
+            <%= relayStat[:teams] %>
+            <table class="bargraph">
+              <tr>
+                <td><%= relayStat[:teamsgoalpercent] %>%</td>
+                <td>
+                  <div class="line">
+                    <div class="fill" style="width:<%= relayStat[:teamsgoalpercent] %>px"></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
         </tr>
     <% } %>
   </tbody>
+  <tfoot>
+    <tr>
+      <th class="text"></th>
+      <th class="number">
+        <%= @totals[:dollarsraised] %>
+        <table class="bargraph">
+          <tr>
+            <td><%= @totals[:raisedgoalpercent] %>%</td>
+            <td>
+              <div class="line">
+                <div class="fill" style="width:<%= @totals[:raisedgoalpercent] %>px"></div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </th>
+      <th class="number">
+        <%= @totals[:participants] %>
+        <table class="bargraph">
+          <tr>
+            <td><%= @totals[:partsgoalpercent] %>%</td>
+            <td>
+              <div class="line">
+                <div class="fill" style="width:<%= @totals[:partsgoalpercent] %>px"></div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </th>
+      <th class="number">
+        <%= @totals[:teams] %>
+        <table class="bargraph">
+          <tr>
+            <td><%= @totals[:teamsgoalpercent] %>%</td>
+            <td>
+              <div class="line">
+                <div class="fill" style="width:<%= @totals[:teamsgoalpercent] %>px"></div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </th>
+    </tr>
+  </tfoot>
 </table>
 

@@ -8,7 +8,7 @@ h1 { color: #310875; }
 td.number, th.number { text-align:right; }
 td.text, th.text { text-align:left; }
 
-.statusTable {
+table.statusTable {
     border-collapse: collapse;
     border: 1px solid #62409C;
 }
@@ -19,10 +19,47 @@ td.text, th.text { text-align:left; }
     font-size: 1.4em;
     padding: 5px 7px 4px;
     padding-top: 5px;
+    border-collapse: collapse;
+}
+
+.statusTable tr {
+    border-collapse: collapse;
+    border: 1px solid #62409C;
 }
 
 .statusTable td {
+    vertical-align: top;
     font-size: 1.2em;
     padding: 3px 7px 2px;
 }
 
+table.bargraph {
+    margin: 0 0 0 auto;
+}
+
+.bargraph td {
+    font-size: 0.7em;
+    vertical-align: middle;
+    padding: 0 0 2px;
+}
+
+.line {
+    height: 10px;
+    margin-right: 0;
+    width: 100px;
+    background-color: #FFFFFF;
+    border: 1px solid #91B155;
+}
+
+.fill {
+    height: 10px;
+    background-color: #91B155;
+}
+
+tfoot .fill {
+    background-color: #D5C0DE;
+}
+
+tfoot .line {
+    border: 1px solid #D5C0DE;
+}
