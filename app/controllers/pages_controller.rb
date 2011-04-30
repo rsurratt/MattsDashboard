@@ -10,7 +10,7 @@ class PagesController < ApplicationController
       fetchPage('http://main.acsevents.org/site/TR?pg=entry&fr_id=31102', 65500, 100, 600)
     ]
 
-    @totals = { :raised => 0.to_r, :teams => 0, :participants => 0, :raisedgoal => 0, :teamsgoal => 0, :partsgoal => 0 }
+    @totals = { :raised => 0, :teams => 0, :participants => 0, :raisedgoal => 0, :teamsgoal => 0, :partsgoal => 0 }
     @relayStats.each { |relayStat|
       @totals[:raised] = @totals[:raised] + relayStat[:raised]
       @totals[:teams] = @totals[:teams] + relayStat[:teams].to_i
@@ -38,7 +38,7 @@ class PagesController < ApplicationController
 
       data = {}
       data[:url] = url
-      data[:raisedgoal] = rgoal
+      data[:raisedgoal] = rgoal * 100
       data[:teamsgoal] = tgoal
       data[:partsgoal] = pgoal
 
@@ -59,8 +59,8 @@ class PagesController < ApplicationController
       }
 
       if !data[:dollarsraised].nil?
-        data[:raised] = data[:dollarsraised].delete("$, ").to_r
-        data[:raisedgoalpercent] = (data[:raised] / rgoal * 100).to_i
+        data[:raised] = data[:dollarsraised].delete("$., ").to_i
+        data[:raisedgoalpercent] = (data[:raised] / rgoal).to_i
       end
 
       if !data[:teams].nil?
@@ -75,7 +75,7 @@ class PagesController < ApplicationController
     end
 
    def format_dollars(n)
-     s = '%.2f' % n.to_f
+     s = '%.2f' % (n.to_f / 100.0)
      '$' + s.gsub(/(\d)(?=\d{3}+(?:\.|$))(\d{3}\..*)?/,'\1,\2')
    end
 
