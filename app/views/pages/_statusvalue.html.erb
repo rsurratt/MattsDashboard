@@ -1,0 +1,11 @@
+<%= statusvalue.sval %>
+<table class="bargraph">
+  <tr>
+    <td><%= statusvalue.percent_of_goal %>%</td>
+    <td>
+      <div class="line">
+        <div class="fill" style="width:<%= statusvalue.percent_of_goal %>px"></div>
+      </div>
+    </td>
+  </tr>
+</table>
