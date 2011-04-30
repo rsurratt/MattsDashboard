@@ -9,99 +9,31 @@
   <thead>
     <tr>
       <th class="text">Relay</th>
-      <th class="number">Dollars Raised</th>
-      <th class="number">Participants</th>
-      <th class="number">Teams</th>
+      <% @valueKeys.each do |key| %>
+        <th class="number"><%= @valueLabels[key] %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
-    <% @relayStats.each { |relayStat| %>
+    <% @relayStats.each do |relayStat| %>
         <tr>
           <td class="text"><a href="<%= relayStat[:url] %>"><%= relayStat[:name] %></a></td>
-          <td class="number">
-            <%= relayStat[:dollarsraised] %>
-            <table class="bargraph">
-              <tr>
-                <td><%= relayStat[:raisedgoalpercent] %>%</td>
-                <td>
-                  <div class="line">
-                    <div class="fill" style="width:<%= relayStat[:raisedgoalpercent] %>px"></div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td class="number">
-            <%= relayStat[:participants] %>
-            <table class="bargraph">
-              <tr>
-                <td><%= relayStat[:partsgoalpercent] %>%</td>
-                <td>
-                  <div class="line">
-                    <div class="fill" style="width:<%= relayStat[:partsgoalpercent] %>px"></div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td class="number">
-            <%= relayStat[:teams] %>
-            <table class="bargraph">
-              <tr>
-                <td><%= relayStat[:teamsgoalpercent] %>%</td>
-                <td>
-                  <div class="line">
-                    <div class="fill" style="width:<%= relayStat[:teamsgoalpercent] %>px"></div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
+          <% @valueKeys.each do |key| %>
+            <td class="number">
+              <%= render :partial => 'statusvalue', :object => relayStat[key] %>
+            </td>
+          <% end %>
         </tr>
-    <% } %>
+    <% end %>
   </tbody>
   <tfoot>
     <tr>
       <th class="text"></th>
-      <th class="number">
-        <%= @totals[:dollarsraised] %>
-        <table class="bargraph">
-          <tr>
-            <td><%= @totals[:raisedgoalpercent] %>%</td>
-            <td>
-              <div class="line">
-                <div class="fill" style="width:<%= @totals[:raisedgoalpercent] %>px"></div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </th>
-      <th class="number">
-        <%= @totals[:participants] %>
-        <table class="bargraph">
-          <tr>
-            <td><%= @totals[:partsgoalpercent] %>%</td>
-            <td>
-              <div class="line">
-                <div class="fill" style="width:<%= @totals[:partsgoalpercent] %>px"></div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </th>
-      <th class="number">
-        <%= @totals[:teams] %>
-        <table class="bargraph">
-          <tr>
-            <td><%= @totals[:teamsgoalpercent] %>%</td>
-            <td>
-              <div class="line">
-                <div class="fill" style="width:<%= @totals[:teamsgoalpercent] %>px"></div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </th>
+      <% @valueKeys.each do |key| %>
+        <th class="number">
+          <%= render :partial => 'statusvalue', :object =>  @totals[key] %>
+        </th>
+      <% end %>
     </tr>
   </tfoot>
 </table>
