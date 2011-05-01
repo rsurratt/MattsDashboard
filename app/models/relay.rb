@@ -9,7 +9,7 @@ class Relay < ActiveRecord::Base
 
   belongs_to :user
 
-  default_score :order => 'relays.created_at DESC'
+  default_scope :order => 'relays.created_at DESC'
 
   def goals
     {
