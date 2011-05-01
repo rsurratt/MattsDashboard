@@ -96,19 +96,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="relay.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="relay.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/relay.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="11" column="49" selection-start="511" selection-end="511" vertical-scroll-proportion="0.25502318">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="relays_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="relays_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/relays_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="39" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.5795981">
+            <state line="51" column="39" selection-start="1127" selection-end="1216" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -166,7 +166,6 @@
         <option value="$PROJECT_DIR$/app/views/relays/show.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/relays_helper.rb" />
         <option value="$PROJECT_DIR$/app/views/relays/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/relay.rb" />
         <option value="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_status_value.html.erb" />
         <option value="$PROJECT_DIR$/app/models/status_value.rb" />
@@ -179,6 +178,7 @@
         <option value="$PROJECT_DIR$/app/views/relays/edit.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/relays_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/relay.rb" />
       </list>
     </option>
   </component>
@@ -936,16 +936,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/relay.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/relays_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="51" column="39" selection-start="1127" selection-end="1216" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/relays_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/relay.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="39" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.5795981">
+        <state line="11" column="49" selection-start="511" selection-end="511" vertical-scroll-proportion="0.25502318">
           <folding />
         </state>
       </provider>
