@@ -1,5 +1,20 @@
 MattDashboard::Application.routes.draw do
+  resources :users
+  resources :relays
+
+  match 'dashboard/:id' => 'dashboard#view', :as => :dashboard
+
+  get "users/index"
+  get "users/show"
+  get "users/new"
+  get "users/create"
+  get "users/edit"
+  get "users/update"
+  get "users/destroy"
+
   get "pages/dashboard"
+
+  root :to => 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

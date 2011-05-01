@@ -1,0 +1,25 @@
+<table class="acsTable">
+  <thead>
+    <tr>
+      <th class="text">Name</th>
+      <th class="number">Relays</th>
+      <th class="command"></th>
+    </tr>
+  </thead>
+
+<% @users.each do |user| %>
+  <tr>
+    <td class="text"><%= link_to user.name, user %></td>
+    <td class="number"><%= user.relays.count %></td>
+    <td class="command"><%= link_to 'Dashboard', dashboard_path(user.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<%= link_to 'Add New Executive', new_user_path %> |
+<%= link_to 'Show All Relays', relays_path %>
+
+<br />
+
+

@@ -1,0 +1,42 @@
+<%= form_for(@relay) do |f| %>
+  <% if @relay.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@relay.errors.count, "error") %> prohibited this relay from being saved:</h2>
+
+      <ul>
+      <% @relay.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => @relay.user.id %>
+
+  <table class="acsTable">
+    <tr>
+      <th class="text"><%= f.label :name, relayLabel[:name] %></th>
+      <td><%= f.text_field :name, :size => 80 %></td>
+    </tr>
+    <tr>
+      <th class="text"><%= f.label :url, relayLabel[:url] %></th>
+      <td><%= f.text_field :url, :size => 80 %></td>
+    </tr>
+    <tr>
+      <th class="text"><%= f.label :dollarsraised_goal, relayLabel[:dollarsraised_goal] %></th>
+      <td><%= f.text_field :dollarsraised_goal, :size => 80 %></td>
+    </tr>
+    <tr>
+      <th class="text"><%= f.label :participants_goal, relayLabel[:participants_goal] %></th>
+      <td><%= f.text_field :participants_goal, :size => 80 %></td>
+    </tr>
+    <tr>
+      <th class="text"><%= f.label :teams_goal, relayLabel[:teams_goal] %></th>
+      <td><%= f.text_field :teams_goal, :size => 80 %></td>
+    </tr>
+  </table>
+  <br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

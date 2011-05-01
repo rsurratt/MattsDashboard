@@ -1,0 +1,35 @@
+<% if !notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<table class="acsTable">
+  <tr>
+    <th class="text"><%= relayLabel[:name] %></th>
+    <td><%= @relay.name %></td>
+  </tr>
+  <tr>
+    <th class="text"><%= relayLabel[:url] %></th>
+    <td><%= @relay.url %></td>
+  </tr>
+  <tr>
+    <th class="text"><%= relayLabel[:dollarsraised_goal] %></th>
+    <td><%= @relay.dollarsraised_goal %></td>
+  </tr>
+  <tr>
+    <th class="text"><%= relayLabel[:participants_goal] %></th>
+    <td><%= @relay.participants_goal %></td>
+  </tr>
+  <tr>
+    <th class="text"><%= relayLabel[:teams_goal] %></th>
+    <td><%= @relay.teams_goal %></td>
+  </tr>
+  <tr>
+    <th class="text"><%= relayLabel[:user] %></th>
+    <td><%= link_to @relay.user.name, user_path(@relay.user) %></td>
+  </tr>
+</table>
+
+<br/>
+
+<%= link_to 'Edit', edit_relay_path(@relay) %> |
+<%= link_to 'All Relays', relays_path %>

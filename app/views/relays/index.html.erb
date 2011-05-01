@@ -1,0 +1,29 @@
+<table class="acsTable">
+  <thead>
+    <tr>
+      <th class="text"><%= relayLabel[:name] %></th>
+      <th class="text"><%= relayLabel[:user] %></th>
+      <th class="number"><%= relayLabel[:dollarsraised_goal] %></th>
+      <th class="number"><%= relayLabel[:participants_goal] %></th>
+      <th class="number"><%= relayLabel[:teams_goal] %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relays.each do |relay| %>
+      <tr>
+        <td class="text"><%= link_to relay.name, edit_relay_path(relay) %></td>
+        <td class="text"><%= link_to relay.user.name, user_path(relay.user) %></td>
+        <td class="number"><%= relay.dollarsraised_goal %></td>
+        <td class="number"><%= relay.participants_goal %></td>
+        <td class="number"><%= relay.teams_goal %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+</table>
+
+<br />
+
+<%= link_to 'Show All Executives', users_path %>

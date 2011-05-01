@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+
+<h2>Relays</h2>
+<table class="acsTable">
+  <thead>
+    <tr>
+      <th class="text"><%= relayLabel[:name] %></th>
+      <th class="number"><%= relayLabel[:dollarsraised_goal] %></th>
+      <th class="number"><%= relayLabel[:participants_goal] %></th>
+      <th class="number"><%= relayLabel[:teams_goal] %></th>
+      <th class="command"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.relays.each do |relay| %>
+      <tr>
+        <td class="text"><%= link_to relay.name, relay_path(relay) %></td>
+        <td class="number"><%= relay.dollarsraised_goal %></td>
+        <td class="number"><%= relay.participants_goal %></td>
+        <td class="number"><%= relay.teams_goal %></td>
+        <td class="command">
+          <%= link_to 'Edit', edit_relay_path(relay) %> |
+          <%= link_to 'Remove', relay, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+</table>
+
+<br />
+
+<%= link_to 'Add Relay', new_relay_path("relay[user_id]" => @user.id) %>
+
+</p>
+
+<%= link_to 'Dashboard', dashboard_path(@user) %> |
+<%= link_to 'Change Name', edit_user_path(@user) %> |
+<%= link_to 'Remove ' + @user.name, @user, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Show All Executives', users_path %> |
+<%= link_to 'Show All Relays', relays_path %>

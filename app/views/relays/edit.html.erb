@@ -1,0 +1,5 @@
+<%= render 'form' %>
+
+<%= link_to 'Back to ' + @relay.name, @relay %> |
+<%= link_to 'Back to ' + @relay.user.name, user_path(@relay.user) %> |
+<%= link_to 'All Relays', relays_path %>

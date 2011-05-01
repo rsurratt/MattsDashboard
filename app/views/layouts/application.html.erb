@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MattDashboard</title>
+  <title>ACS Dashboard</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<table class="heading">
+  <tr>
+    <td><img border="0" alt="Relay for Life" src="http://main.acsevents.org/images/RFLFY10images/Logo.gif"/></td>
+    <td><h1><%= @pageTitle %></h1></td>
+  </tr>
+</table>
 
 <%= yield %>
+
+<%= debug(params) if Rails.env.development? %>
 
 </body>
 </html>

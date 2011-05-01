@@ -8,12 +8,12 @@ h1 { color: #310875; }
 td.number, th.number { text-align:right; }
 td.text, th.text { text-align:left; }
 
-table.statusTable {
+table.acsTable {
     border-collapse: collapse;
     border: 1px solid #62409C;
 }
 
-.statusTable th {
+.acsTable th {
     background-color: #7253A6;
     color: #FFFFFF;
     font-size: 1.4em;
@@ -22,12 +22,12 @@ table.statusTable {
     border-collapse: collapse;
 }
 
-.statusTable tr {
+.acsTable tr {
     border-collapse: collapse;
     border: 1px solid #62409C;
 }
 
-.statusTable td {
+.acsTable td {
     vertical-align: top;
     font-size: 1.2em;
     padding: 3px 7px 2px;

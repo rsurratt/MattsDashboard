@@ -3,6 +3,7 @@ require 'uri'
 
 class PagesController < ApplicationController
   def dashboard
+    @pageTitle = "Matt Blom's Relays"
     @valueKeys = [ :dollarsraised, :participants, :teams ]
     @valueLabels = { :dollarsraised => "Dollars Raised",
                 :teams => "Teams",
