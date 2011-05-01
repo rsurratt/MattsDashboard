@@ -44,12 +44,12 @@ class RelaysController < ApplicationController
   # POST /relays
   # POST /relays.xml
   def create
-    @users = User.find(params[:relay][:user_id])
-    @relay = @users.relays.create(params[:relay])
+    @user = User.find(params[:relay][:user_id])
+    @relay = @user.relays.create(params[:relay])
 
     respond_to do |format|
       if @relay.save
-        format.html { redirect_to(@relay, :notice => 'Relay was successfully created.') }
+        format.html { redirect_to(@user, :notice => 'Relay was successfully created.') }
         format.xml  { render :xml => @relay, :status => :created, :location => @relay }
       else
         format.html { render :action => "new" }

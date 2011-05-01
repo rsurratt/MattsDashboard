@@ -60,15 +60,6 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dashboard_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="889" selection-end="889" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,10 +87,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.3709428">
+            <state line="16" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="relay.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/relay.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="relays_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/relays_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="39" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.5795981">
               <folding />
             </state>
           </provider>
@@ -156,7 +165,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/views/relays/show.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/relays_helper.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/relays_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/relays/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/relay.rb" />
         <option value="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
@@ -170,6 +178,7 @@
         <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/relays/edit.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/relays_controller.rb" />
       </list>
     </option>
   </component>
@@ -829,13 +838,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/pages_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="0" selection-end="34" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/pages/_statusvalue.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="0" selection-end="263" vertical-scroll-proportion="-7.173913">
@@ -929,7 +931,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.3709428">
+        <state line="16" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/relay.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/relays_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="39" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.5795981">
           <folding />
         </state>
       </provider>
