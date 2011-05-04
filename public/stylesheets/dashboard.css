@@ -35,12 +35,18 @@ table.acsTable {
 
 table.bargraph {
     margin: 0 0 0 auto;
+    border: none;
+}
+
+.bargraph tr {
+    border: none;
 }
 
 .bargraph td {
     font-size: 0.7em;
     vertical-align: middle;
     padding: 0 0 2px;
+    border: none;
 }
 
 .line {
