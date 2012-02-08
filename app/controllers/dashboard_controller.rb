@@ -38,9 +38,12 @@ class DashboardController < ApplicationController
         return data
       end
 
-      body.scan(/<span id=.rotating_progress\d+.>\n([^:]+): &nbsp;([^\n]+)/) { |match|
-        key = match[0].downcase.delete(" ").to_sym
-        data[key] = StatusValue.new(key, match[1], goals[key])
+
+      section = body.scan(/<div id=.greetingFundProgStats.>\n(.*)\n/);
+      section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
+        key = match[1].downcase.delete(" ").to_sym
+        key = :dollarsraised if key == :raised
+        data[key] = StatusValue.new(key, match[0], goals[key])
       }
 
       return data
