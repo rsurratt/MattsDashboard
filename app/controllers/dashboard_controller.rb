@@ -29,7 +29,9 @@ class DashboardController < ApplicationController
       goals = relay.goals
 
       uri = URI.parse(relay.url)
-      res = Net::HTTP.start(uri.host, uri.port) { |http|
+      req = Net::HTTP.new(uri.host, uri.port)
+      req.read_timeout = 60
+      res = req.start() { |http|
         http.get(uri.request_uri)
       }
 
