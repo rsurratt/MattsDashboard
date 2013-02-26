@@ -16,11 +16,11 @@ class DashboardController < ApplicationController
     @relayStats = @user.relays.map { |relay| fetchPage(relay) }
 
     @totals = {}
-    @valueKeys.each { |key|
+    @valueKeys.each do |key|
       if @relayStats.first[key].kind_of?(StatusValue)
         @totals[key] = StatusValue.sum( @relayStats.map {|stat| stat[key]})
       end
-    }
+    end
   end
 
   private
@@ -31,24 +31,30 @@ class DashboardController < ApplicationController
       uri = URI.parse(relay.url)
       req = Net::HTTP.new(uri.host, uri.port)
       req.read_timeout = 60
-      res = req.start() { |http|
+      res = req.start() do |http|
         http.get(uri.request_uri)
-      }
+      end
 
       body = res.body
       if body.nil?
         return data
       end
 
+      section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
 
-      section = body.scan(/<div id=.greetingFundProgStats.>\n(.*)\n/);
-      section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
-        key = match[1].downcase.delete(" ").to_sym
-        key = :dollarsraised if key == :raised
-        data[key] = StatusValue.new(key, match[0], goals[key])
-      }
+      section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
+        data[:teams] = StatusValues.new(:teams, match[0], goals[:teams])
+        data[:participants] = StatusValues.new(:participants, match[1], goals[:participants])
+        data[:dollarsraised] = StatusValues.new(:dollarsraised, match[2], goals[:dollarsraised])
+      end
 
-      return data
+      #section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
+      #  key = match[1].downcase.delete(" ").to_sym
+      #  key = :dollarsraised if key == :raised
+      #  data[key] = StatusValue.new(key, match[0], goals[key])
+      #}
+
+      data
     end
 
 end
