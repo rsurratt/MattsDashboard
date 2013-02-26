@@ -43,9 +43,9 @@ class DashboardController < ApplicationController
       section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
 
       section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
-        data[:teams] = StatusValues.new(:teams, match[0], goals[:teams])
-        data[:participants] = StatusValues.new(:participants, match[1], goals[:participants])
-        data[:dollarsraised] = StatusValues.new(:dollarsraised, match[2], goals[:dollarsraised])
+        data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
+        data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
+        data[:dollarsraised] = StatusValue.new(:dollarsraised, match[2], goals[:dollarsraised])
       end
 
       #section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
