@@ -48,7 +48,7 @@ class DashboardController < ApplicationController
 
         raised = match[2]
         raised += '.00' if !raised.include?('.')
-        data[:dollarsraised] = StatusValue.new(:dollarsraised, match[2], goals[:dollarsraised])
+        data[:dollarsraised] = StatusValue.new(:dollarsraised, raised, goals[:dollarsraised])
       end
 
       #section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
