@@ -45,6 +45,9 @@ class DashboardController < ApplicationController
       section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
         data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
         data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
+
+        raised = match[2]
+        raised += '.00' if !raised.include?('.')
         data[:dollarsraised] = StatusValue.new(:dollarsraised, match[2], goals[:dollarsraised])
       end
 
