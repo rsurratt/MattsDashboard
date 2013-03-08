@@ -14,6 +14,7 @@ class DashboardController < ApplicationController
     }
 
     @relayStats = @user.relays.map { |relay| fetchPage(relay) }
+    @relayStats = @relayStats.sort_by { |relay| relay[:date] }
 
     @totals = {}
     @valueKeys.each do |key|
@@ -38,6 +39,10 @@ class DashboardController < ApplicationController
       body = res.body
       if body.nil?
         return data
+      end
+
+      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*, 2013)</) do |match|
+        data[:date] = Date.strptime(match[0], '%B %d, %Y')
       end
 
       section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
