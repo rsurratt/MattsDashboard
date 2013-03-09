@@ -43,7 +43,7 @@ class DashboardController < ApplicationController
         return data
       end
 
-      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*, 2013)</) do |match|
+      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*, 2013)/) do |match|
         data[:date] = Date.strptime(match[0], '%B %d, %Y')
       end
 
