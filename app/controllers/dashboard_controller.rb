@@ -14,8 +14,6 @@ class DashboardController < ApplicationController
     }
 
     @relayStats = @user.relays.map { |relay| fetchPage(relay) }
-    @relayStats.each { |rstat| puts(">>> #{rstat[:date]}") }
-
     @relayStats = @relayStats.sort_by { |rstat| rstat[:date] }
 
     @totals = {}
