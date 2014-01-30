@@ -37,7 +37,7 @@ class DashboardController < ApplicationController
 
     @users = users.map do |user|
 
-      relayStats = users.relays.map { |relay| fetchPage(relay) }
+      relayStats = user.relays.map { |relay| fetchPage(relay) }
       relayStats = relayStats.sort_by { |rstat| rstat[:date] }
 
       totals = {}
