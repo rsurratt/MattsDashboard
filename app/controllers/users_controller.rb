@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @pageTitle = "All Executives"
+    @pageTitle = "All Specialists"
     @users = User.all
 
     respond_to do |format|
