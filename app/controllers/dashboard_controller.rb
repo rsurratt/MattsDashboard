@@ -42,18 +42,7 @@ class DashboardController < ApplicationController
       end
 
       body.scan(/<p id="tr-greeting-eventInfo-date">([^<]*)/) do |match|
-        m = match[0].sub(/.*-/, '')
-        parts = m.split(',')
-
-        if parts.length == 1
-          m = m.strip
-        elsif parts.length == 2
-          m = parts[0].strip + " " + parts[1].strip
-        elsif parts.length > 2
-          m = parts[parts.length-2].strip + " " + parts[parts.length-1].strip
-        end
-
-        data[:date] = Date.strptime(m, '%B %d %Y')
+        data[:date] = parseDate(match[0])
       end
 
       section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
@@ -74,6 +63,29 @@ class DashboardController < ApplicationController
       #}
 
       data
+    end
+
+    def testParseDate
+      parseDate("Friday, June 27 2014")
+      parseDate("June 13- June 14, 2014")
+      parseDate("Saturday, June 14, 2014")
+      parseDate("Saturday, June 14,2014")
+    end
+
+    def parseDate(s)
+      dateStr =
+        if match = /(.*)-(.*),(.*)/.match(s)
+          puts "hyphen"
+          match[1].strip + " " + match[3].strip
+        elsif match = /(.*),(.*),(.*)/.match(s)
+          puts "three part"
+          match[2].strip + " " + match[3].strip
+        elsif match = /(.*),([^,]+201[34])/.match(s)
+          puts "no comma before year"
+          match[2].strip
+        end
+      puts "    " + dateStr
+      Date.strptime(dateStr, '%B %d %Y')
     end
 
     def debugFetchPage(url)
