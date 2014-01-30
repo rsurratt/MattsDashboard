@@ -24,7 +24,38 @@ class DashboardController < ApplicationController
     end
   end
 
-  def viewAll
+  def view_all
+    users = Users.all()
+
+    @pageTitle = "Overview Dashboard By User"
+    @valueKeys = [ :dollarsraised, :participants, :teams ]
+    @valueLabels = {
+                :dollarsraised => "Dollars Raised",
+                :teams => "Teams",
+                :participants => "Participants"
+    }
+
+    @users = users.map do |user|
+
+      relayStats = users.relays.map { |relay| fetchPage(relay) }
+      relayStats = relayStats.sort_by { |rstat| rstat[:date] }
+
+      totals = {}
+      valueKeys.each do |key|
+        if @relayStats.first[key].kind_of?(StatusValue)
+          @totals[key] = StatusValue.sum( @relayStats.map {|stat| stat[key]})
+        end
+      end
+
+      {
+        :user => user,
+        :relays => relayStats,
+        :totals => totals
+      }
+    end
+  end
+
+  def view_all_by_user
     relays = Relay.all()
 
     @pageTitle = "Overview Dashboard"

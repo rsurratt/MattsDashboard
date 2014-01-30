@@ -1,3 +1,7 @@
+<%= link_to 'Sorted By Date', overview_date_path %>
+
+<% @users.each do |user] %>
+  <h4><%= user[:user].name %></h4>
 <table class="acsTable">
   <thead>
     <tr>
@@ -9,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @relayStats.each do |relayStat| %>
+    <% user[:relays].each do |relayStat| %>
         <tr>
           <td class="text"><%= relayStat[:date] %></td>
           <td class="text"><a href="<%= relayStat[:relay].url %>"><%= relayStat[:relay].name %></a></td>
@@ -25,9 +29,10 @@
     <tr>
       <th class="text"></th>
       <th class="text"></th>
+      <th class="text"></th>
       <% @valueKeys.each do |key| %>
         <th class="number">
-          <%= render :partial => 'status_value', :object =>  @totals[key] %>
+          <%= render :partial => 'status_value', :object =>  user[:totals][key] %>
         </th>
       <% end %>
     </tr>
@@ -35,7 +40,8 @@
 </table>
 
 <br/>
+<% end %>
 
-<%= link_to "Edit " + @user.name + "'s Relays", user_path(@user) %> |
 <%= link_to 'Show All Specialists', users_path %>
+<%= link_to 'All Relays', relays_path %>
 
