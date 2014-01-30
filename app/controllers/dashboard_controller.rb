@@ -42,8 +42,8 @@ class DashboardController < ApplicationController
 
       totals = {}
       @valueKeys.each do |key|
-        if @relayStats.first[key].kind_of?(StatusValue)
-          totals[key] = StatusValue.sum( @relayStats.map {|stat| stat[key]})
+        if relayStats.first[key].kind_of?(StatusValue)
+          totals[key] = StatusValue.sum( relayStats.map {|stat| stat[key]})
         end
       end
 
