@@ -41,9 +41,9 @@ class DashboardController < ApplicationController
       relayStats = relayStats.sort_by { |rstat| rstat[:date] }
 
       totals = {}
-      valueKeys.each do |key|
+      @valueKeys.each do |key|
         if @relayStats.first[key].kind_of?(StatusValue)
-          @totals[key] = StatusValue.sum( @relayStats.map {|stat| stat[key]})
+          totals[key] = StatusValue.sum( @relayStats.map {|stat| stat[key]})
         end
       end
 
