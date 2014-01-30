@@ -13,7 +13,7 @@
     <% @relayStats.each do |relayStat| %>
         <tr>
           <td class="text"><%= relayStat[:date] %></td>
-          <td class="text"><%= relayStat[:relay].user.name %></td>
+          <td class="text"><%= link_to relayStat[:relay].user.name, dashboard_path(relayStat[:relay].user) %></td>
           <td class="text"><a href="<%= relayStat[:relay].url %>"><%= relayStat[:relay].name %></a></td>
           <% @valueKeys.each do |key| %>
             <td class="number">
