@@ -71,6 +71,7 @@ class DashboardController < ApplicationController
       parseDate("Saturday, June 14, 2014")
       parseDate("Saturday, June 14,2014")
       parseDate("September 6,2013 5:30PM")
+      parseDate("Saturday May 31st 2014 ")
     end
 
     def parseDate(s)
@@ -87,6 +88,9 @@ class DashboardController < ApplicationController
         elsif match = /(.*),([^,]+201[34])/.match(s)
           puts "no comma before year"
           match[2].strip
+        elsif match = /(\w*) (\w*) (\d*)\w* (\d*)/.match(s)
+          puts "no commas with st"
+          match[2].strip + " " + match[3] + " " + match[4]
         end
       puts "    " + dateStr
       Date.strptime(dateStr, '%B %d %Y')
