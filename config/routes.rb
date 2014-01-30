@@ -3,6 +3,7 @@ MattDashboard::Application.routes.draw do
   resources :relays
 
   match 'dashboard/:id' => 'dashboard#view', :as => :dashboard
+  match 'dashboard/all' => 'dashboard#viewAll', :as => :dashboardAll
 
   get "users/index"
   get "users/show"

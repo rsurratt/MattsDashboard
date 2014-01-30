@@ -1,0 +1,44 @@
+<table class="acsTable">
+  <thead>
+    <tr>
+      <th class="text">Date</th>
+      <th class="text">Specialist</th>
+      <th class="text">Relay</th>
+      <% @valueKeys.each do |key| %>
+        <th class="number"><%= @valueLabels[key] %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @relayStats.each do |relayStat| %>
+        <tr>
+          <td class="text">relayStat[:date]</td>
+          <td class="text">relayStat[:relay].user.name</td>
+          <td class="text"><a href="<%= relayStat[:relay].url %>"><%= relayStat[:relay].name %></a></td>
+          <% @valueKeys.each do |key| %>
+            <td class="number">
+              <%= render :partial => 'status_value', :object =>  relayStat[key] %>
+            </td>
+          <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th class="text"></th>
+      <th class="text"></th>
+      <th class="text"></th>
+      <% @valueKeys.each do |key| %>
+        <th class="number">
+          <%= render :partial => 'status_value', :object =>  @totals[key] %>
+        </th>
+      <% end %>
+    </tr>
+  </tfoot>
+</table>
+
+<br/>
+
+<%= link_to "Edit " + @user.name + "'s Relays", user_path(@user) %> |
+<%= link_to 'Show All Executives', users_path %>
+
