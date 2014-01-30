@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
     end
   end
 
-  def view_all
+  def view_all_by_user
     users = User.all()
 
     @pageTitle = "Overview Dashboard By User"
@@ -55,7 +55,7 @@ class DashboardController < ApplicationController
     end
   end
 
-  def view_all_by_user
+  def view_all
     relays = Relay.all()
 
     @pageTitle = "Overview Dashboard"
