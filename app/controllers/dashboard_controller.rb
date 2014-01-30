@@ -130,22 +130,22 @@ class DashboardController < ApplicationController
     def parseDate(s)
       dateStr =
         if match = /(.*)-(.*),(.*)/.match(s)
-          puts "hyphen"
+#          puts "hyphen"
           match[1].strip + " " + match[3].strip
         elsif match = /(.*),(.*),(.*)/.match(s)
-          puts "three part"
+#          puts "three part"
           match[2].strip + " " + match[3].strip
         elsif match = /(.*),(.*) ([0-9:]+PM)/.match(s)
-          puts "with time"
+#          puts "with time"
           match[1].strip + " " + match[2].strip
         elsif match = /(.*),([^,]+201[34])/.match(s)
-          puts "no comma before year"
+#          puts "no comma before year"
           match[2].strip
         elsif match = /(\w*) (\w*) (\d*)\w* (\d*)/.match(s)
-          puts "no commas with st"
+#          puts "no commas with st"
           match[2].strip + " " + match[3] + " " + match[4]
         end
-      puts "    " + dateStr
+#      puts "    " + dateStr
       Date.strptime(dateStr, '%B %d %Y')
     end
 
