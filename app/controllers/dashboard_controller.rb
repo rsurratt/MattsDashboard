@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
   end
 
   def view_all
-    users = Users.all()
+    users = User.all()
 
     @pageTitle = "Overview Dashboard By User"
     @valueKeys = [ :dollarsraised, :participants, :teams ]
