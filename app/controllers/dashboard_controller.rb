@@ -41,8 +41,8 @@ class DashboardController < ApplicationController
         return data
       end
 
-      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*),? ?(201[34])/) do |match|
-        data[:date] = Date.strptime("#{match[0].strip}, #{match[1].strip}", '%B %d, %Y')
+      body.scan(/<p id="tr-greeting-eventInfo-date">[^,]*, (.*)(201[34])/) do |match|
+        data[:date] = Date.strptime("#{match[0].sub(/,/, '').strip}, #{match[1]}", '%B %d, %Y')
       end
 
       section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
@@ -78,11 +78,11 @@ class DashboardController < ApplicationController
         return data
       end
 
-      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*),? ?(201[34])/) do |match|
-        puts match[0]
+      body.scan(/<p id="tr-greeting-eventInfo-date">[^,]*, (.*)(201[34])/) do |match|
+        puts match[0].sub(/,/, '').strip
         puts match[1]
-        puts "#{match[0].strip}, #{match[1].strip}"
-        puts Date.strptime("#{match[0].strip}, #{match[1].strip}", '%B %d, %Y')
+        puts "#{match[0].sub(/,/, '').strip}, #{match[1]}"
+        puts Date.strptime("#{match[0].sub(/,/, '').strip}, #{match[1]}", '%B %d, %Y')
       end
 
       section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
