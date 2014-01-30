@@ -41,7 +41,7 @@ class DashboardController < ApplicationController
         return data
       end
 
-      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*, 2014)/) do |match|
+      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*, ?201[34])/) do |match|
         data[:date] = Date.strptime(match[0], '%B %d, %Y')
       end
 
@@ -64,5 +64,32 @@ class DashboardController < ApplicationController
 
       data
     end
+
+    def debugFetchPage(url)
+      uri = URI.parse(url)
+      req = Net::HTTP.new(uri.host, uri.port)
+      req.read_timeout = 60
+      res = req.start() do |http|
+        http.get(uri.request_uri)
+      end
+
+      body = res.body
+      if body.nil?
+        return data
+      end
+
+      body.scan(/<p id="tr-greeting-eventInfo-date">.*, (.*, ?201[34])/) do |match|
+        puts Date.strptime(match[0], '%B %d, %Y')
+      end
+
+      section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
+
+      section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
+        puts match[0]
+        puts match[1]
+        puts match[2]
+      end
+    end
+
 
 end
