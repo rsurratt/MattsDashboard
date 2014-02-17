@@ -118,7 +118,7 @@ class DashboardController < ApplicationController
         #  data[key] = StatusValue.new(key, match[0], goals[key])
         #}
       rescue => ex
-        logging.error("Exception fetching #{relay.url}: #{ex.message}")
+        logger.error("Exception fetching #{relay.url}: #{ex.message}")
         data[:error] = ex.message
         data[:date] = Date.today unless data[:date]
       end
