@@ -119,6 +119,8 @@ class DashboardController < ApplicationController
         #}
       rescue => ex
         logging.error("Exception fetching #{relay.url}: #{ex.message}")
+        data[:error] = ex.message
+        data[:date] = Date.today unless data[:date]
       end
 
       data
