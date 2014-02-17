@@ -28,10 +28,12 @@ class StatusValue
     is_money = false
 
     values.each { |value|
-      label = value.label
-      sum_ival = sum_ival + value.ival
-      sum_goal = sum_goal + value.goal
-      is_money = is_money || value.is_money
+      if !value.nil?
+        label = value.label
+        sum_ival = sum_ival + value.ival
+        sum_goal = sum_goal + value.goal
+        is_money = is_money || value.is_money
+      end
     }
 
     if is_money
