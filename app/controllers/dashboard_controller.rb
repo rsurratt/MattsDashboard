@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
                 :participants => "Participants"
     }
 
-    @relayStats = @user.relays.map { |relay| fetchPage(relay) }
+    @relayStats = Parallel.map(@user.relays, :in_threads => 4) { |relay| fetchPage(relay) }
     @relayStats = @relayStats.sort_by { |rstat| rstat[:date] }
 
     @totals = {}
@@ -37,7 +37,7 @@ class DashboardController < ApplicationController
 
     @users = users.map do |user|
 
-      relayStats = user.relays.map { |relay| fetchPage(relay) }
+      relayStats = Parallel.map(user.relays, :in_threads => 4) { |relay| fetchPage(relay) }
       relayStats = relayStats.sort_by { |rstat| rstat[:date] }
 
       totals = {}
@@ -66,7 +66,7 @@ class DashboardController < ApplicationController
                 :participants => "Participants"
     }
 
-    @relayStats = relays.map { |relay| fetchPage(relay) }
+    @relayStats = Parallel.map(relays, :in_threads => 4) { |relay| fetchPage(relay) }
     @relayStats = @relayStats.sort_by { |rstat| rstat[:date] }
 
     @totals = {}
