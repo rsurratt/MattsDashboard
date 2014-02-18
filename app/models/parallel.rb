@@ -1,4 +1,4 @@
-irequire 'thread' # to get Thread.exclusive
+require 'thread' # to get Thread.exclusive
 require 'rbconfig'
 
 module Parallel
