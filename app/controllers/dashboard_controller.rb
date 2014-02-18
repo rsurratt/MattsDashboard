@@ -1,6 +1,6 @@
 require 'net/http'
 require 'uri'
-require '../../lib/parallel'
+require '../../lib/parallel.rb'
 
 class DashboardController < ApplicationController
   def view
