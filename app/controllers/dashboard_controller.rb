@@ -2,6 +2,9 @@ require 'net/http'
 require 'uri'
 
 class DashboardController < ApplicationController
+
+  THREADS = 8
+
   def view
     @user = User.find(params[:id])
 
@@ -13,7 +16,7 @@ class DashboardController < ApplicationController
                 :participants => "Participants"
     }
 
-    @relayStats = Parallel.map(@user.relays, :in_threads => 4) { |relay| fetchPage(relay) }
+    @relayStats = Parallel.map(@user.relays, :in_threads => THREADS) { |relay| fetchPage(relay) }
     @relayStats = @relayStats.sort_by { |rstat| rstat[:date] }
 
     @totals = {}
@@ -37,7 +40,7 @@ class DashboardController < ApplicationController
 
     @users = users.map do |user|
 
-      relayStats = Parallel.map(user.relays, :in_threads => 4) { |relay| fetchPage(relay) }
+      relayStats = Parallel.map(user.relays, :in_threads => THREADS) { |relay| fetchPage(relay) }
       relayStats = relayStats.sort_by { |rstat| rstat[:date] }
 
       totals = {}
@@ -66,7 +69,7 @@ class DashboardController < ApplicationController
                 :participants => "Participants"
     }
 
-    @relayStats = Parallel.map(relays, :in_threads => 4) { |relay| fetchPage(relay) }
+    @relayStats = Parallel.map(relays, :in_threads => THREADS) { |relay| fetchPage(relay) }
     @relayStats = @relayStats.sort_by { |rstat| rstat[:date] }
 
     @totals = {}
