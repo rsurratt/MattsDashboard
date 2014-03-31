@@ -125,6 +125,7 @@ class DashboardController < ApplicationController
         data[:error] = ex.message
         data[:date] = Date.today unless data[:date]
       end
+      logger.info("Fetched #{relay.url}")
 
       data
     end
