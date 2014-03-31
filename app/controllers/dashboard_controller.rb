@@ -102,7 +102,13 @@ class DashboardController < ApplicationController
         end
 
         body.scan(/<p id="tr-greeting-eventInfo-date">([^<]*)/) do |match|
-          data[:date] = parseDate(match[0])
+          begin
+            data[:date] = parseDate(match[0])
+          rescue => ex
+            logger.error("Exception parsing date for #{relay.url} [#{match[0]}]: #{ex.message}")
+            data[:error] = ex.message
+            data[:date] = Date.today unless data[:date]
+          end
         end
 
         section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
