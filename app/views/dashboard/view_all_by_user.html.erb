@@ -10,6 +10,7 @@
       <% @valueKeys.each do |key| %>
         <th class="number"><%= @valueLabels[key] %></th>
       <% end %>
+      <th class="text"></th>
     </tr>
   </thead>
   <tbody>
@@ -17,14 +18,13 @@
         <tr>
           <td class="text"><%= relayStat[:date] %></td>
           <td class="text"><a href="<%= relayStat[:relay].url %>"><%= relayStat[:relay].name %></a></td>
+          <% @valueKeys.each do |key| %>
+            <td class="number">
+              <%= render :partial => 'status_value', :object =>  relayStat[key] %>
+            </td>
+          <% end %>
           <% if relayStat[:error] %>
             <td class="text" colspan="3"><%= relayStat[:error] %></td>
-          <% else %>
-            <% @valueKeys.each do |key| %>
-              <td class="number">
-                <%= render :partial => 'status_value', :object =>  relayStat[key] %>
-              </td>
-            <% end %>
           <% end %>
         </tr>
     <% end %>
@@ -38,6 +38,7 @@
           <%= render :partial => 'status_value', :object =>  user[:totals][key] %>
         </th>
       <% end %>
+      <th class="text"></th>
     </tr>
   </tfoot>
 </table>

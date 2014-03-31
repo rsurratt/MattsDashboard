@@ -6,6 +6,7 @@
       <% @valueKeys.each do |key| %>
         <th class="number"><%= @valueLabels[key] %></th>
       <% end %>
+      <th class="text"></th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,7 @@
           <%= render :partial => 'status_value', :object =>  @totals[key] %>
         </th>
       <% end %>
+      <th class="text"></th>
     </tr>
   </tfoot>
 </table>
