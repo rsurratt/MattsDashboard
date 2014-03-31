@@ -3,7 +3,7 @@ require 'uri'
 
 class DashboardController < ApplicationController
 
-  THREADS = 8
+  THREADS = 22
 
   def view
     @user = User.find(params[:id])
@@ -90,7 +90,7 @@ class DashboardController < ApplicationController
       begin
         uri = URI.parse(relay.url)
         req = Net::HTTP.new(uri.host, uri.port)
-        req.read_timeout = 60
+        req.read_timeout = 20
         res = req.start() do |http|
           http.get(uri.request_uri)
         end
