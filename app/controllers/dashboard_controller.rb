@@ -120,7 +120,7 @@ class DashboardController < ApplicationController
         #  key = :dollarsraised if key == :raised
         #  data[key] = StatusValue.new(key, match[0], goals[key])
         #}
-      rescue Timeout::Error => e
+      rescue Timeout::Error => ex
         logger.error("Timeout fetching #{relay.url}: #{ex.message}")
         data[:error] = "Timeout"
         data[:date] = Date.today unless data[:date]
