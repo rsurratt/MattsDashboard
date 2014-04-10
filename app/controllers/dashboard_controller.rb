@@ -142,6 +142,7 @@ class DashboardController < ApplicationController
     end
 
     def testParseDate
+      parseDate("March 28, 2014")
       parseDate("Friday, June 27 2014")
       parseDate("June 13- June 14, 2014")
       parseDate("Saturday, June 14, 2014")
@@ -161,7 +162,10 @@ class DashboardController < ApplicationController
         elsif match = /(.*),(.*) ([0-9:]+PM)/.match(s)
 #          puts "with time"
           match[1].strip + " " + match[2].strip
-        elsif match = /(.*),([^,]+201[34])/.match(s)
+        elsif match = /(.*), (201[345])/.match(s)
+#          puts "comma and space before year"
+          match[1].strip + " " + match[2].strip
+        elsif match = /(.*),([^, ]+201[345])/.match(s)
 #          puts "no comma before year"
           match[2].strip
         elsif match = /(\w*) (\w*) (\d*)\w* (\d*)/.match(s)
