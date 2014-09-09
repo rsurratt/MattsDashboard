@@ -115,7 +115,7 @@ logger.info(">>3")
 
         section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
 logger.info(">>4")
-date[:error] = section
+data[:error] = section
 data[:date] = Date.today unless data[:date]
 #        section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
 #          data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
