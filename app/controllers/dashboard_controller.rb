@@ -115,15 +115,16 @@ logger.info(">>3")
 
         section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
 logger.info(">>4")
+date[:error] = section
+data[:date] = Date.today unless data[:date]
+#        section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
+#          data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
+#          data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
 
-        section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
-          data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
-          data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
-
-          raised = match[2]
-          raised += '.00' if !raised.include?('.')
-          data[:dollarsraised] = StatusValue.new(:dollarsraised, raised, goals[:dollarsraised])
-        end
+#          raised = match[2]
+#          raised += '.00' if !raised.include?('.')
+#          data[:dollarsraised] = StatusValue.new(:dollarsraised, raised, goals[:dollarsraised])
+#        end
 logger.info(">>5")
 
         #section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
