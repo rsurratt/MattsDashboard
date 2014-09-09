@@ -95,15 +95,11 @@ class DashboardController < ApplicationController
         res = req.start() do |http|
           http.get(uri.request_uri)
         end
-logger.info(">>1")
+
         body = res.body
-        data[:error] = "0"
         if body.nil?
           return data
         end
-        data[:error] = body.length
-        data[:date] = Date.today unless data[:date]
-logger.info(">>2")
 
         body.scan(/<p id="tr-greeting-eventInfo-date">([^<]*)/) do |match|
           begin
@@ -114,26 +110,22 @@ logger.info(">>2")
             data[:date] = Date.today unless data[:date]
           end
         end
-logger.info(">>3")
 
-#        section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
-#        section = body.scan(/(tr-greeting-eventStats)/)
-logger.info(">>4")
-#        section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
-#          data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
-#          data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
+        section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
+        section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
+          data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
+          data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
 
-#          raised = match[2]
-#          raised += '.00' if !raised.include?('.')
-#          data[:dollarsraised] = StatusValue.new(:dollarsraised, raised, goals[:dollarsraised])
-#        end
-logger.info(">>5")
+          raised = match[2]
+          raised += '.00' if !raised.include?('.')
+          data[:dollarsraised] = StatusValue.new(:dollarsraised, raised, goals[:dollarsraised])
+        end
 
-        #section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
-        #  key = match[1].downcase.delete(" ").to_sym
-        #  key = :dollarsraised if key == :raised
-        #  data[key] = StatusValue.new(key, match[0], goals[key])
-        #}
+        section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
+          key = match[1].downcase.delete(" ").to_sym
+          key = :dollarsraised if key == :raised
+          data[key] = StatusValue.new(key, match[0], goals[key])
+        }
       rescue Timeout::Error => ex
         logger.error("Timeout fetching #{relay.url}: #{ex.message}")
         data[:error] = "Timeout"
