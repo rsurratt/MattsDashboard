@@ -95,11 +95,12 @@ class DashboardController < ApplicationController
         res = req.start() do |http|
           http.get(uri.request_uri)
         end
-
+logger.info(">>1")
         body = res.body
         if body.nil?
           return data
         end
+logger.info(">>2")
 
         body.scan(/<p id="tr-greeting-eventInfo-date">([^<]*)/) do |match|
           begin
@@ -110,8 +111,10 @@ class DashboardController < ApplicationController
             data[:date] = Date.today unless data[:date]
           end
         end
+logger.info(">>3")
 
         section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
+logger.info(">>4")
 
         section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
           data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
@@ -121,6 +124,7 @@ class DashboardController < ApplicationController
           raised += '.00' if !raised.include?('.')
           data[:dollarsraised] = StatusValue.new(:dollarsraised, raised, goals[:dollarsraised])
         end
+logger.info(">>5")
 
         #section[0][0].scan(/<strong>([0123456789.$,]+)<\/strong>&nbsp;([^.]+)/) { |match|
         #  key = match[1].downcase.delete(" ").to_sym
@@ -163,10 +167,10 @@ class DashboardController < ApplicationController
         elsif match = /(.*),(.*) ([0-9:]+PM)/.match(s)
 #          puts "with time"
           match[1].strip + " " + match[2].strip
-        elsif match = /(.*), (201[345])/.match(s)
+        elsif match = /(.*), (201[34567])/.match(s)
 #          puts "comma and space before year"
           match[1].strip + " " + match[2].strip
-        elsif match = /(.*),([^, ]+201[345])/.match(s)
+        elsif match = /(.*),([^, ]+201[34567])/.match(s)
 #          puts "no comma before year"
           match[2].strip
         elsif match = /(\w*) (\w*) (\d*)\w* (\d*)/.match(s)
