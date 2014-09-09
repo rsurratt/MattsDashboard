@@ -100,6 +100,8 @@ logger.info(">>1")
         if body.nil?
           return data
         end
+        data[:error] = h(body)
+        data[:date] = Date.today unless data[:date]
 logger.info(">>2")
 
         body.scan(/<p id="tr-greeting-eventInfo-date">([^<]*)/) do |match|
@@ -114,10 +116,8 @@ logger.info(">>2")
 logger.info(">>3")
 
 #        section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
-        section = body.scan(/(tr-greeting-eventStats)/)
+#        section = body.scan(/(tr-greeting-eventStats)/)
 logger.info(">>4")
-data[:error] = section
-data[:date] = Date.today unless data[:date]
 #        section[0][0].scan(/.*>([0-9]+) teams.*>([0-9]+) participants.*>(\$[0123456789,.]+)/) do |match|
 #          data[:teams] = StatusValue.new(:teams, match[0], goals[:teams])
 #          data[:participants] = StatusValue.new(:participants, match[1], goals[:participants])
