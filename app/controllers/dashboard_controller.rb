@@ -100,7 +100,7 @@ logger.info(">>1")
         if body.nil?
           return data
         end
-        data[:error] = h(body)
+        data[:error] = html_escape(body)
         data[:date] = Date.today unless data[:date]
 logger.info(">>2")
 
