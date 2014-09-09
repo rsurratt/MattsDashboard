@@ -97,10 +97,11 @@ class DashboardController < ApplicationController
         end
 logger.info(">>1")
         body = res.body
+        data[:error] = "0"
         if body.nil?
           return data
         end
-        data[:error] = CGI.escape(body)
+        data[:error] = body.length
         data[:date] = Date.today unless data[:date]
 logger.info(">>2")
 
