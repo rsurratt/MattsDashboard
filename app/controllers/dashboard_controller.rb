@@ -114,7 +114,7 @@ logger.info(">>2")
 logger.info(">>3")
 
 #        section = body.scan(/<div id="tr-greeting-eventStats">\n(.*)\n/)
-        section = body.scan(/<div id="tr-greeting-eventStats">/)
+        section = body.scan(/(tr-greeting-eventStats)/)
 logger.info(">>4")
 data[:error] = section
 data[:date] = Date.today unless data[:date]
