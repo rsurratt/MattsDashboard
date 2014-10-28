@@ -3,7 +3,7 @@ require 'uri'
 
 class DashboardController < ApplicationController
 
-  THREADS = 1
+  THREADS = 25
   TIMEOUT_SECONDS = 30
 
   def view
