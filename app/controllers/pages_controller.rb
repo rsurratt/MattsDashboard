@@ -88,7 +88,7 @@ class StatusValue
     is_money = false
 
     values.each { |value|
-      if value.nil?
+      if !value.nil?
         label = value.label
         sum_ival = sum_ival + value.ival
         sum_goal = sum_goal + value.goal
