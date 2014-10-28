@@ -62,8 +62,8 @@
       <file leaf-file-name="dashboard_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5707472" vertical-offset="1951" max-vertical-offset="3600">
-              <caret line="154" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3799682" vertical-offset="1471" max-vertical-offset="3600">
+              <caret line="114" column="65" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -582,12 +582,12 @@
       <created>1304100937084</created>
       <updated>1304100937084</updated>
       <workItem from="1410233288155" duration="7547000" />
-      <workItem from="1414454551721" duration="3340000" />
+      <workItem from="1414454551721" duration="3533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10887000" />
+    <option name="totallyTimeSpent" value="11080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1436" height="819" extended-state="6" />
@@ -942,8 +942,8 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5707472" vertical-offset="1951" max-vertical-offset="3600">
-          <caret line="154" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3799682" vertical-offset="1471" max-vertical-offset="3600">
+          <caret line="114" column="65" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="65" />
           <folding />
         </state>
       </provider>
