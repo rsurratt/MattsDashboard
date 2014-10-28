@@ -149,30 +149,42 @@ class DashboardController < ApplicationController
       parseDate("Saturday, June 14,2014")
       parseDate("September 6,2013 5:30PM")
       parseDate("Saturday May 31st 2014 ")
+      parseDate("April 11th-April 12th 6pm-8am")
+      parseDate("May 30th 10am to 11pm")
+      parseDate("Saturday, May 16th, 2015")
     end
 
     def parseDate(s)
       dateStr =
-        if match = /(.*)-(.*),(.*)/.match(s)
-#          puts "hyphen"
-          match[1].strip + " " + match[3].strip
+        if /.*20\d\d.*/ !~ s
+          puts "no year"
+          if match = /(\w*) (\d*)\w*.*/.match(s)
+            puts "month day with ordinal"
+            "#{match[1].strip} #{match[2].strip} 2015"
+          end
+        elsif match = /(.*)-(.*),(.*)/.match(s)
+          puts "hyphen"
+          "#{match[1].strip} #{match[3].strip}"
+        elsif match = /(.*), (\w*) (\d*)\w*,(.*)/.match(s)
+          puts "three part with ordinal"
+          "#{match[2].strip} #{match[3].strip} #{match[4].strip}"
         elsif match = /(.*),(.*),(.*)/.match(s)
-#          puts "three part"
-          match[2].strip + " " + match[3].strip
+          puts "three part"
+          "#{match[2].strip} #{match[3].strip}"
         elsif match = /(.*),(.*) ([0-9:]+PM)/.match(s)
-#          puts "with time"
-          match[1].strip + " " + match[2].strip
+          puts "with time"
+          "#{match[1].strip} #{match[2].strip}"
         elsif match = /(.*), (201[34567])/.match(s)
-#          puts "comma and space before year"
-          match[1].strip + " " + match[2].strip
+          puts "comma and space before year"
+          "#{match[1].strip} #{match[2].strip}"
         elsif match = /(.*),([^, ]+201[34567])/.match(s)
-#          puts "no comma before year"
+          puts "no comma before year"
           match[2].strip
         elsif match = /(\w*) (\w*) (\d*)\w* (\d*)/.match(s)
-#          puts "no commas with st"
-          match[2].strip + " " + match[3] + " " + match[4]
+          puts "no commas with ordinal"
+          "#{match[2].strip} #{match[3]} #{match[4]}"
         end
-#      puts "    " + dateStr
+      puts "    " + dateStr
       Date.strptime(dateStr, '%B %d %Y')
     end
 
